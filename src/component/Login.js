@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { handleValidate } from "../utils/validate";
-import { createUserWithEmailAndPassword,onAuthStateChanged,signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, removeUser } from "../store/userSlice";
+import { addUser } from "../store/userSlice";
 import Header from "./Header";
 
 
@@ -12,7 +11,6 @@ const Login=()=>{
 
     const [signIn,setSignIn]=useState(false);
     const [errorMsg,setErrorMsg]=useState(null)
-    const navigate=useNavigate();
     const dispatch=useDispatch();
     const user1=useSelector((store)=>store.user);
     console.log("user",user1)
