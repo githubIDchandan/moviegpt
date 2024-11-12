@@ -1,10 +1,11 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { handleValidate } from "../utils/validate";
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword,onAuthStateChanged,signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addUser } from "../store/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, removeUser } from "../store/userSlice";
+import Header from "./Header";
 
 
 const Login=()=>{
@@ -13,6 +14,8 @@ const Login=()=>{
     const [errorMsg,setErrorMsg]=useState(null)
     const navigate=useNavigate();
     const dispatch=useDispatch();
+    const user1=useSelector((store)=>store.user);
+    console.log("user",user1)
    const handleSignIn=()=>{
         console.log(signIn)
          setSignIn(!signIn)
@@ -21,10 +24,10 @@ const Login=()=>{
    const email=useRef(null);
    const password=useRef(null);
    const name=useRef(null)
-
+  
   const handleForm=(e)=>{
     e.preventDefault();
-   
+    
     // console.log(email.current.value);
     // console.log(password.current.value)
 
@@ -47,7 +50,7 @@ const Login=()=>{
             // fetching id,email,name from the updated value. you cant write user only it will not reflect the changes
             const {uid,email,displayName}=auth.currentUser;
              dispatch(addUser({uid:uid,email:email,displayName:displayName}))
-             navigate("/browse")
+            //  navigate("/browse")
           }).catch((error) => {
             // An error occurred
             // ...
@@ -68,7 +71,7 @@ const Login=()=>{
         // Signed in 
         const user = userCredential.user;
         console.log(user)
-        navigate("/browse")
+        // navigate("/browse")
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -82,8 +85,14 @@ const Login=()=>{
 
   }
 
+ 
+
+
     return(
+      <div>
+      <Header/>
         <div className="bg-yellow-400 w-screen h-screen bg-gradient-to-t from-black flex items-center justify-center">
+         
             <div  className="bg-white w-5/12  rounded-lg bg-gradient-to-t from-yellow-700 ">
                 <div className="p-2 ">
                     <h1 className="font-semibold text-2xl">{signIn?"Sign up":"Sign In"}</h1>
@@ -103,6 +112,7 @@ const Login=()=>{
                 </form>
                 </div>
             </div>
+        </div>
         </div>
     )
 

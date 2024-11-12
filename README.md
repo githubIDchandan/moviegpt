@@ -17,6 +17,7 @@
 - Implemented SignOut 
 - Updated profile
 - Fetch from TMDB Movies
+- 
 
 
 
