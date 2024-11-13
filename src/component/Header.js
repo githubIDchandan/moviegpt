@@ -19,7 +19,7 @@ const Header=()=>{
         // navigate("/")
       }).catch((error) => {
         // An error happened.
-        // navigate("/erroe")
+        // navigate("/error")
       });
 
 
@@ -29,11 +29,11 @@ const Header=()=>{
   useEffect(()=>{
     console.log("login Loaded")
    const unsubscribe= onAuthStateChanged(auth, (user) => {
-      console.log("onauthchanges",user)
+      // console.log("onauthchanges",user)
         if (user) {
             // console.log(user)
           const {uid,email,displayName} = user;
-          console.log(uid,email,displayName)
+          // console.log(uid,email,displayName)
           dispatch(addUser({uid:uid,email:email,displayName:displayName}));
         //   you can not navigate from here navigete from child of RouterProvider
         //   other soln. is use window.location.href
@@ -53,15 +53,15 @@ const Header=()=>{
 
 
     return(
-        <div className="bg-yellow-400 bg-gradient-to-l from-black">
+        <div className="bg-black  absolute z-10 w-full opacity-90">
             {user&&<div className="flex justify-between">
            
                 <div className="flex">
-                <img alt="img" className="w-[100px] h-[80px] rounded-sm opacity-30 " src={LOGO}></img>
-                <h2 className="m-auto mx-10 font-semibold text-2xl text-white font-sans">Welcome {user?.displayName}</h2>
+                {/* <img alt="img" className="w-[100px] h-[80px] rounded-sm opacity-30 " src={LOGO}></img> */}
+                <h2 className="m-auto mx-10  text-2xl text-white font-thin">Welcome {user?.displayName}</h2>
                 </div>
                 {/* <img alt="img" src=" ../public/movielogo.png"></img> */}
-                 <button className="bg-yellow-400 rounded-lg mx-3 w-28 h-11 font-semibold my-4 bg-gradient-to-r from-white"
+                 <button className="bg-yellow-800 text-black rounded-sm mx-3 w-28 h-11 font-semibold my-4 bg-gradient-to-b from-white"
                    onClick={handlesignout}
                  >Sign Out</button>
 

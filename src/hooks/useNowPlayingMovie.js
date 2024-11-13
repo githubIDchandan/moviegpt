@@ -13,7 +13,7 @@ const useNowPlayingMovie=()=>{
     const getNowPlayingMovie=async()=>{
         const data=await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1',API_OPTIONS);
         const json=await data.json();
-        console.log(json.results)
+        // console.log("hii",json.results)
           dispatch(addNowPlayingMovies(json.results))
         }
 
@@ -21,8 +21,7 @@ const useNowPlayingMovie=()=>{
             getNowPlayingMovie();
         },[])
 
-        // const movie=useSelector((store)=>store.movie);
-        // console.log("movies",movie))
+       
 
 }
 
