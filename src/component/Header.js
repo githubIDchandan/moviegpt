@@ -4,13 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../store/userSlice";
-import { LOGO } from "../utils/constant";
+import { LOGO, SUPPORTED_LANGUAGE } from "../utils/constant";
+import { addToggleView } from "../store/gptSlice";
+import { addLang } from "../store/langConfig";
 
 
 const Header=()=>{
 
   const navigate=useNavigate();
-  const user=useSelector((store)=>store.user)
+  const user=useSelector((store)=>store.user);
+  const toggleView=useSelector((store)=>store.gpt.toggleView)
   console.log(user)
   const dispatch=useDispatch()
   const handlesignout=()=>{
@@ -50,6 +53,15 @@ const Header=()=>{
       return ()=> unsubscribe();
   },[])
 
+    const handleGptClick=()=>{
+         dispatch(addToggleView())
+    }
+  
+  const handleSelect=(e)=>{
+
+    dispatch(addLang(e.target.value));
+
+  }
 
 
     return(
@@ -61,9 +73,19 @@ const Header=()=>{
                 <h2 className="m-auto mx-10  text-2xl text-white font-thin">Welcome {user?.displayName}</h2>
                 </div>
                 {/* <img alt="img" src=" ../public/movielogo.png"></img> */}
+                <div>
+                  {toggleView&&<select className="p-1 m-2 bg-black text-white border border-white rounded-sm" onChange={handleSelect}>
+                    {SUPPORTED_LANGUAGE.map((item)=>{
+                      return <option value={item.identifier}>{item.name}</option>
+                    })}
+                  </select>}
+                <button className={toggleView===true?"bg-red-800 text-white p-2 w-28":"bg-purple-800 text-white p-2 w-28"}
+                   onClick={handleGptClick}
+                >{toggleView===true?"Home":"GPT Search"}</button>
                  <button className="bg-yellow-800 text-black rounded-sm mx-3 w-28 h-11 font-semibold my-4 bg-gradient-to-b from-white"
                    onClick={handlesignout}
                  >Sign Out</button>
+                </div>
 
             </div>}
         </div>
