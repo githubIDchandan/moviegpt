@@ -3,6 +3,7 @@ import { CDN_POSTER_URL } from "../utils/constant";
 
 
 const MovieCard=({item})=>{
+    if(!item.poster_path)return null;
     console.log("item",item)
     return(
         <div className="">

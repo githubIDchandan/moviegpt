@@ -4,7 +4,7 @@ import GptSearchBar from "./GptSearchBar";
 
 const GptSearchPage=()=>{
     return(
-        <div className=" absolute m-8 z-20 w-full">
+        <div className=" absolute  w-full">
             <GptSearchBar/>
             <GptMovieSuggestion/>
         </div>

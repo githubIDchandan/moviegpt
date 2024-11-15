@@ -76,7 +76,7 @@ const Header=()=>{
                 <div>
                   {toggleView&&<select className="p-1 m-2 bg-black text-white border border-white rounded-sm" onChange={handleSelect}>
                     {SUPPORTED_LANGUAGE.map((item)=>{
-                      return <option value={item.identifier}>{item.name}</option>
+                      return <option key={item.identifier} value={item.identifier}>{item.name}</option>
                     })}
                   </select>}
                 <button className={toggleView===true?"bg-red-800 text-white p-2 w-28":"bg-purple-800 text-white p-2 w-28"}
