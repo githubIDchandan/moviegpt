@@ -69,15 +69,15 @@ const GptSearchBar=()=>{
 
 
     return(
-        <div className="mt-32 ml-32">
+        <div className="mt-32 ,ml-0 md:ml-32">
             <form className="" onSubmit={(e)=>e.preventDefault()}>
-                <input ref={gptText} className="w-[50%] p-4 text-lg rounded-sm border border-black" placeholder={langConstant[langKey].placeholder}></input>
-                <button className="bg-red-600 text-white p-4  w-40 ml-2 rounded-sm text-xl"
+                <input ref={gptText} className="w-[90%] ml-4 md:w-[50%] p-4 text-lg rounded-sm border border-black" placeholder={langConstant[langKey].placeholder}></input>
+                <button className="bg-teal-700 md:bg-red-600 w-[90%] md:w-40 text-white p-4 ml-4 mt-2 md:mt-0 rounded-sm md:rounded-sm text-xl"
                   onClick={handleGptClick}
                 >{langConstant[langKey].search}</button>
             </form>
             <div>
-                <h1 className="bg-red-100 w-fit">Below GPT Result:"Funny Indian Retro Movie"</h1>
+                <h1 className=" w-fit ml-10 md:ml-4 mt-2 md:mt-0 bg-white md:bg-red-100 text-black md:text-black">Below GPT Result:"Funny Indian Retro Movie"</h1>
             </div>
         </div>
     )

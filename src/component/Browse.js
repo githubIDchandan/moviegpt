@@ -16,7 +16,7 @@ const Browse=()=>{
     useUpcoming();
     
     return(
-        <div>
+        <div className="">
            <Header/>
             {toggleView===false?(<>
                 <MainContainer/>

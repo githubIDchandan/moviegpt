@@ -12,7 +12,7 @@ const SecondaryContainerContainer=()=>{
 
 
     return(
-        <div className="-mt-36">
+        <div className="-mt-46 md:-mt-36">
             {/* 
                MovieList - Popular
                    moviecard*n;

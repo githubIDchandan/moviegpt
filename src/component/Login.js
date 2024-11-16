@@ -91,7 +91,7 @@ const Login=()=>{
       <Header/>
         <div className="bg-yellow-400 w-screen h-screen bg-gradient-to-t from-black flex items-center justify-center">
          
-            <div  className="bg-white w-5/12  rounded-lg bg-gradient-to-t from-yellow-700 ">
+            <div  className="bg-white w-full md:w-5/12  rounded-lg bg-gradient-to-t from-yellow-700 ">
                 <div className="p-2 ">
                     <h1 className="font-semibold text-2xl">{signIn?"Sign up":"Sign In"}</h1>
                 </div>

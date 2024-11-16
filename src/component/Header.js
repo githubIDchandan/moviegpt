@@ -65,15 +65,15 @@ const Header=()=>{
 
 
     return(
-        <div className="bg-black  absolute z-10 w-full opacity-90">
-            {user&&<div className="flex justify-between">
+        <div className="bg-blue-900 md:bg-black   md:fixed z-10 w-full opacity-90">
+            {user&&<div className="flex flex-col md:flex-row justify-between">
            
-                <div className="flex">
+                <div className="flex mx-auto md:mx-0">
                 {/* <img alt="img" className="w-[100px] h-[80px] rounded-sm opacity-30 " src={LOGO}></img> */}
-                <h2 className="m-auto mx-10  text-2xl text-white font-thin">Welcome {user?.displayName}</h2>
+                <h2 className="m-auto mx-10   text-2xl text-white font-thin">Welcome {user?.displayName}</h2>
                 </div>
                 {/* <img alt="img" src=" ../public/movielogo.png"></img> */}
-                <div>
+                <div className="text-center">
                   {toggleView&&<select className="p-1 m-2 bg-black text-white border border-white rounded-sm" onChange={handleSelect}>
                     {SUPPORTED_LANGUAGE.map((item)=>{
                       return <option key={item.identifier} value={item.identifier}>{item.name}</option>
